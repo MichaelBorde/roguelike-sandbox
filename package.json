@@ -1,7 +1,7 @@
 {
-  "name": "isometric-sandbox",
+  "name": "roguelike-sandbox",
   "version": "1.0.0",
-  "description": "",
+  "description": "Roguelike sandbox",
   "private": true,
   "scripts": {
     "test": "npm run eslint",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MichaelBorde/isometric-sandbox.git"
+    "url": "git+https://github.com/MichaelBorde/roguelike-sandbox.git"
   },
   "author": "Michael Borde",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MichaelBorde/isometric-sandbox/issues"
+    "url": "https://github.com/MichaelBorde/roguelike-sandbox/issues"
   },
-  "homepage": "https://github.com/MichaelBorde/isometric-sandbox#readme",
+  "homepage": "https://github.com/MichaelBorde/roguelike-sandbox#readme",
   "devDependencies": {
     "eslint": "4.16.0",
     "prettier": "1.10.2"

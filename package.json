@@ -1,0 +1,29 @@
+{
+  "name": "isometric-sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "npm run eslint",
+    "eslint": "eslint .",
+    "prettier": "prettier --write \"**/*.js\"",
+    "start": "http-server -p 9000 ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichaelBorde/isometric-sandbox.git"
+  },
+  "author": "Michael Borde",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MichaelBorde/isometric-sandbox/issues"
+  },
+  "homepage": "https://github.com/MichaelBorde/isometric-sandbox#readme",
+  "devDependencies": {
+    "eslint": "4.16.0",
+    "prettier": "1.10.2"
+  },
+  "dependencies": {
+    "http-server": "0.11.1"
+  }
+}

@@ -1,7 +1,10 @@
-import { BrowserMainLoop, renderWorld, WebInputs } from './browser/index.js';
-import { Point, Vector } from './geometry/index.js';
+import './style/index.css';
+import { BrowserMainLoop, renderWorld, WebInputs } from './browser';
+import { Point, Vector } from './geometry';
+import { State } from './state';
+import { InputState } from './inputs';
 
-const initialState = {
+const initialState: State = {
   world: [
     ['#', '#', '#', '#', '#', '#', '#', '#', '#', '#'],
     ['#', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
@@ -26,7 +29,7 @@ new BrowserMainLoop({
   initialState
 }).start();
 
-function update(description) {
+function update(description: { inputs: InputState; state: State }) {
   const { inputs, state } = description;
   if (inputs.up) {
     return movePlayer(state, new Vector({ x: 0, y: -1 }));
@@ -40,7 +43,7 @@ function update(description) {
   return { ...state };
 }
 
-function movePlayer(state, movement) {
+function movePlayer(state: State, movement: Vector) {
   const nextPosition = new Point(state.playerPosition).add(movement);
   if (movementAllowed(state, nextPosition)) {
     return { ...state, playerPosition: { ...nextPosition } };
@@ -48,11 +51,11 @@ function movePlayer(state, movement) {
   return state;
 }
 
-function movementAllowed(state, position) {
+function movementAllowed(state: State, position: Point) {
   return state.world[position.y][position.x] === '.';
 }
 
-function render(description) {
+function render(description: { state: State }) {
   const { state } = description;
   const { world, playerPosition } = state;
   const worldCopy = world.slice().map(r => r.slice());

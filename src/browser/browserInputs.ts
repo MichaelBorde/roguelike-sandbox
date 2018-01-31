@@ -1,6 +1,10 @@
-import { Inputs } from '../inputs.js';
+import { Inputs, InputType } from '../inputs';
 
-const codeMapping = {
+interface CodeMapping {
+  [key: string]: InputType;
+}
+
+const codeMapping: CodeMapping = {
   ArrowUp: 'up',
   ArrowDown: 'down',
   ArrowLeft: 'left',
@@ -13,12 +17,12 @@ export class WebInputs extends Inputs {
     this.registerInputEvents();
   }
 
-  registerInputEvents() {
+  private registerInputEvents() {
     const self = this;
     document.addEventListener('keydown', event => handlePressed(event, true));
     document.addEventListener('keyup', event => handlePressed(event, false));
 
-    function handlePressed(event, value) {
+    function handlePressed(event: KeyboardEvent, value: boolean) {
       const input = codeMapping[event.code];
       if (input) {
         self.onInputChanged({ input, value });

@@ -1,18 +1,19 @@
-import { MainLoop } from '../mainLoop.js';
+import { MainLoop } from '../mainLoop';
 
 export class BrowserMainLoop extends MainLoop {
-  start() {
+  private drawAnimationFrame: number;
+
+  public start() {
     const self = this;
     runLoop(window.performance.now());
 
-    function runLoop(timestamp) {
+    function runLoop(timestamp: number) {
       self.drawAnimationFrame = requestAnimationFrame(runLoop);
       self.loop(timestamp);
     }
   }
 
-  stop() {
-    clearInterval(this.updateInterval);
+  public stop() {
     cancelAnimationFrame(this.drawAnimationFrame);
   }
 }

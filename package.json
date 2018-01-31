@@ -4,10 +4,16 @@
   "description": "Roguelike sandbox",
   "private": true,
   "scripts": {
-    "test": "npm run eslint",
-    "eslint": "eslint .",
-    "prettier": "prettier --write \"**/*.js\"",
-    "start": "http-server -p 9000 ."
+    "start": "webpack-dev-server --hot --inline --no-info",
+    "tslint": "tslint --fix src/**/*.ts",
+    "jest": "jest",
+    "testw": "jest --watch",
+    "prettier": "prettier --write \"**/*.ts\"",
+    "compile": "tsc --noEmit",
+    "test": "run-s -c compile jest tslint",
+    "clean": "rm -rf ./build",
+    "bundle": "webpack --bail -p --progress",
+    "build": "NODE_ENV=production ./node_modules/.bin/run-s clean bundle"
   },
   "repository": {
     "type": "git",
@@ -20,10 +26,20 @@
   },
   "homepage": "https://github.com/MichaelBorde/roguelike-sandbox#readme",
   "devDependencies": {
-    "eslint": "4.16.0",
-    "prettier": "1.10.2"
-  },
-  "dependencies": {
-    "http-server": "0.11.1"
+    "@types/jest": "22.1.1",
+    "css-loader": "0.28.9",
+    "html-webpack-plugin": "2.30.1",
+    "jest": "22.1.4",
+    "npm-run-all": "4.1.2",
+    "prettier": "1.10.2",
+    "style-loader": "0.20.1",
+    "ts-jest": "22.0.2",
+    "ts-loader": "^3.4.0",
+    "ts-node": "4.1.0",
+    "tslint": "5.9.1",
+    "tslint-config-prettier": "1.6.0",
+    "typescript": "2.6.2",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "2.11.1"
   }
 }

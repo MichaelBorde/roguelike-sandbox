@@ -1,4 +1,6 @@
-export function renderWorld(world: string[][]) {
+import { World } from '../state';
+
+export function renderWorld(world: World) {
   const screen = document.getElementById('screen');
   screen.innerHTML = '';
   for (const row of world) {

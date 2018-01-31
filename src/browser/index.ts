@@ -1,3 +1,3 @@
-export * from './browserMainLoop';
-export * from './browserInputs';
+export * from './listenToInputs';
+export * from './mainLoopSequencer';
 export * from './renderWorld';

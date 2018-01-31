@@ -1,9 +1,5 @@
+import { RawPoint } from './types';
 import { Vector } from './vector';
-
-export interface RawPoint {
-  x: number;
-  y: number;
-}
 
 export class Point {
   public x: number;

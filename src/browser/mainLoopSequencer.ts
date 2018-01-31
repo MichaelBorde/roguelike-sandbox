@@ -1,7 +1,12 @@
-import { MainLoop } from '../mainLoop';
+import { MainLoop } from '../loop/index';
 
-export class BrowserMainLoop extends MainLoop {
+export class MainLoopSequencer {
+  private mainLoop: MainLoop;
   private drawAnimationFrame: number;
+
+  constructor(mainLoop: MainLoop) {
+    this.mainLoop = mainLoop;
+  }
 
   public start() {
     const self = this;
@@ -9,7 +14,7 @@ export class BrowserMainLoop extends MainLoop {
 
     function runLoop(timestamp: number) {
       self.drawAnimationFrame = requestAnimationFrame(runLoop);
-      self.loop(timestamp);
+      self.mainLoop(timestamp);
     }
   }
 

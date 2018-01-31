@@ -1,7 +1,4 @@
-export interface RawVector {
-  x: number;
-  y: number;
-}
+import { RawVector } from './types';
 
 export class Vector {
   public x: number;

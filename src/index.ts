@@ -1,8 +1,9 @@
 import './style/index.css';
-import { BrowserMainLoop, renderWorld, WebInputs } from './browser';
+import { listenToInputs, MainLoopSequencer, renderWorld } from './browser';
 import { Point, Vector } from './geometry';
 import { State } from './state';
-import { InputState } from './inputs';
+import { ControllerState, Controller } from './inputs';
+import { createMainLoop } from './loop';
 
 const initialState: State = {
   world: [
@@ -20,24 +21,31 @@ const initialState: State = {
   playerPosition: { x: 3, y: 3 }
 };
 
-const inputs = new WebInputs();
+const controller = new Controller();
+listenToInputs(controller);
 
-new BrowserMainLoop({
-  readInputs: inputs.get.bind(inputs),
+const mainLoop = createMainLoop({
+  controller,
   render,
   update,
   initialState
-}).start();
+});
 
-function update(description: { inputs: InputState; state: State }) {
-  const { inputs, state } = description;
-  if (inputs.up) {
+const mainLoopSequencer = new MainLoopSequencer(mainLoop);
+mainLoopSequencer.start();
+
+function update(description: {
+  controllerState: ControllerState;
+  state: State;
+}) {
+  const { controllerState, state } = description;
+  if (controllerState.up) {
     return movePlayer(state, new Vector({ x: 0, y: -1 }));
-  } else if (inputs.down) {
+  } else if (controllerState.down) {
     return movePlayer(state, new Vector({ x: 0, y: 1 }));
-  } else if (inputs.left) {
+  } else if (controllerState.left) {
     return movePlayer(state, new Vector({ x: -1, y: 0 }));
-  } else if (inputs.right) {
+  } else if (controllerState.right) {
     return movePlayer(state, new Vector({ x: 1, y: 0 }));
   }
   return { ...state };

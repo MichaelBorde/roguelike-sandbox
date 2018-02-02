@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const production = process.env.NODE_ENV === 'production';
 
@@ -39,7 +40,7 @@ const configuration = {
       template: resolve('src', 'index.html')
     }),
     production ? new webpack.NoEmitOnErrorsPlugin() : null,
-    production ? new webpack.optimize.UglifyJsPlugin({ sourceMap: true }) : null
+    production ? new UglifyJsPlugin({ sourceMap: true }) : null
   ].filter(x => x)
 };
 

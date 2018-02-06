@@ -1,8 +1,9 @@
 import { RawPoint } from '../geometry';
+import { Grid } from '../types';
 
 export interface State {
-  world: World;
-  playerPosition: RawPoint;
+  scenery: Scenery;
+  player: { position: RawPoint };
 }
 
-export type World = string[][];
+export type Scenery = Grid<string>;

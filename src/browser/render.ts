@@ -1,6 +1,17 @@
-import { World } from '../state';
+import { State } from '../state';
+import { Grid } from '../types';
 
-export function renderWorld(world: World) {
+type World = Grid<string>;
+
+export function render(rendering: { state: State }) {
+  const { state } = rendering;
+  const { scenery, player } = state;
+  const world = scenery.slice().map(r => r.slice());
+  world[player.position.y][player.position.x] = '@';
+  renderWorld(world);
+}
+
+function renderWorld(world: World) {
   const screen = document.getElementById('screen');
   screen.innerHTML = '';
   for (const row of world) {

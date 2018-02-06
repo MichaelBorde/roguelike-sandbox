@@ -1,12 +1,12 @@
-import './style/index.css';
-import { listenToInputs, MainLoopSequencer, renderWorld } from './browser';
+import { bindControllerToInputs, MainLoopSequencer, render } from './browser';
 import { Point, Vector } from './geometry';
-import { State } from './state';
-import { ControllerState, Controller } from './inputs';
+import { Controller, ControllerState } from './inputs';
 import { createMainLoop } from './loop';
+import { State } from './state';
+import './style/index.css';
 
 const initialState: State = {
-  world: [
+  scenery: [
     ['#', '#', '#', '#', '#', '#', '#', '#', '#', '#'],
     ['#', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
     ['#', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
@@ -18,11 +18,11 @@ const initialState: State = {
     ['#', '.', '.', '.', '.', '.', '.', '.', '.', '#'],
     ['#', '#', '#', '#', '#', '#', '#', '#', '#', '#']
   ],
-  playerPosition: { x: 3, y: 3 }
+  player: { position: { x: 3, y: 3 } }
 };
 
 const controller = new Controller();
-listenToInputs(controller);
+bindControllerToInputs(controller);
 
 const mainLoop = createMainLoop({
   controller,
@@ -52,21 +52,19 @@ function update(description: {
 }
 
 function movePlayer(state: State, movement: Vector) {
-  const nextPosition = new Point(state.playerPosition).add(movement);
+  const nextPosition = new Point(state.player.position).add(movement);
   if (movementAllowed(state, nextPosition)) {
-    return { ...state, playerPosition: { ...nextPosition } };
+    return {
+      ...state,
+      player: {
+        ...state.player,
+        position: nextPosition
+      }
+    };
   }
   return state;
 }
 
 function movementAllowed(state: State, position: Point) {
-  return state.world[position.y][position.x] === '.';
-}
-
-function render(description: { state: State }) {
-  const { state } = description;
-  const { world, playerPosition } = state;
-  const worldCopy = world.slice().map(r => r.slice());
-  worldCopy[playerPosition.y][playerPosition.x] = '@';
-  renderWorld(worldCopy);
+  return state.scenery[position.y][position.x] === '.';
 }

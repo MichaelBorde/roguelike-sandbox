@@ -1,3 +1,3 @@
-export * from './listenToInputs';
+export * from './bindControllerToInputs';
 export * from './mainLoopSequencer';
-export * from './renderWorld';
+export * from './render';

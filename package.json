@@ -5,10 +5,10 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --inline --no-info",
-    "tslint": "tslint --fix src/**/*.ts",
+    "tslint": "tslint --fix 'src/**/*.ts'",
     "jest": "jest",
     "testw": "jest --watch",
-    "prettier": "prettier --write \"**/*.ts\"",
+    "prettier": "prettier --write '**/*.ts'",
     "compile": "tsc --noEmit",
     "test": "run-s -c compile jest tslint",
     "clean": "rm -rf ./build",

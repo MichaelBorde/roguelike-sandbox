@@ -11,7 +11,7 @@ const codeMapping: CodeMapping = {
   ArrowRight: 'right'
 };
 
-export function listenToInputs(controller: Controller) {
+export function bindControllerToInputs(controller: Controller) {
   document.addEventListener('keydown', event =>
     handlePressed(event, i => controller.press(i))
   );

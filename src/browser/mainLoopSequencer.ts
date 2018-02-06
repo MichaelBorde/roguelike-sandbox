@@ -1,4 +1,4 @@
-import { MainLoop } from '../loop/index';
+import { MainLoop } from '../loop';
 
 export class MainLoopSequencer {
   private mainLoop: MainLoop;

@@ -1,10 +1,9 @@
-import { State } from '../state';
-import { Grid } from '../types';
+import { Grid } from '../tools';
+import { State } from '../update';
 
 type World = Grid<string>;
 
-export function render(rendering: { state: State }) {
-  const { state } = rendering;
+export function renderState(state: State) {
   const { scenery, player } = state;
   const world = scenery.slice().map(r => r.slice());
   world[player.position.y][player.position.x] = '@';

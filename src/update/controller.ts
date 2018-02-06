@@ -1,4 +1,11 @@
-import { ControllerState, Input } from './types';
+export type Input = 'up' | 'down' | 'left' | 'right';
+
+export interface ControllerState {
+  up: boolean;
+  down: boolean;
+  left: boolean;
+  right: boolean;
+}
 
 export class Controller {
   private state: ControllerState;

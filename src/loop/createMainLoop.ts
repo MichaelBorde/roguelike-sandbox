@@ -1,18 +1,19 @@
-import { Controller } from '../inputs';
-import { State } from '../state';
-import { MainLoopRender, MainLoopUpdate } from './types';
+import { RenderState } from '../render';
+import { Controller, State, UpdateState } from '../update';
+
+export type MainLoop = (timestamp: number) => void;
 
 export function createMainLoop(construction: {
   controller: Controller;
-  update: MainLoopUpdate;
-  render: MainLoopRender;
+  updateState: UpdateState;
+  renderState: RenderState;
   initialState: State;
-}) {
-  const { controller, update, render, initialState } = construction;
+}): MainLoop {
+  const { controller, updateState, renderState, initialState } = construction;
   let state = initialState;
   return (timestamp: number) => {
     const controllerState = controller.snapshot();
-    state = update({ controllerState, state, timestamp });
-    render({ state });
+    state = updateState({ controllerState, state, timestamp });
+    renderState(state);
   };
 }

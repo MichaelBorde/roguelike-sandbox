@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --inline --no-info",
-    "tslint": "tslint --fix 'src/**/*.ts'",
+    "tslint": "tslint --fix 'lib/**/*.ts' 'app/**/*.ts'",
     "jest": "jest",
     "testw": "jest --watch",
     "prettier": "prettier --write '**/*.ts'",

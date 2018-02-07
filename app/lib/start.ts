@@ -1,12 +1,7 @@
-import {
-  bindControllerToInputs,
-  MainLoopSequencer,
-  renderState
-} from './browser';
-import { createMainLoop } from './loop';
-import './style/index.css';
-import { Controller } from './update';
-import { State, updateState } from './update';
+import { Controller, createMainLoop, State, updateState } from '../../lib';
+import { bindControllerToInputs } from './bindControllerToInputs';
+import { MainLoopSequencer } from './mainLoopSequencer';
+import { renderState } from './renderState';
 
 const initialState: State = {
   scenery: [
@@ -24,15 +19,18 @@ const initialState: State = {
   player: { position: { x: 3, y: 3 } }
 };
 
-const controller = new Controller();
-bindControllerToInputs(controller);
+export function start() {
+  const controller = new Controller();
+  bindControllerToInputs(controller);
 
-const mainLoop = createMainLoop({
-  controller,
-  renderState,
-  updateState,
-  initialState
-});
+  const mainLoop = createMainLoop({
+    controller,
+    renderState,
+    updateState,
+    initialState
+  });
 
-const mainLoopSequencer = new MainLoopSequencer(mainLoop);
-mainLoopSequencer.start();
+  const mainLoopSequencer = new MainLoopSequencer(mainLoop);
+  mainLoopSequencer.start();
+}
+

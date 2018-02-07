@@ -13,6 +13,8 @@
     "noUnusedParameters": true,
     "types": ["jest"]
   },
-  "include": ["./src/**/*"],
+  "include": [
+    "./lib/**/*"
+  ],
   "exclude": ["node_modules", "**/*.spec.ts", "**/*.spec.js"]
 }

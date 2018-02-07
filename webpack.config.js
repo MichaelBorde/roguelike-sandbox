@@ -7,7 +7,7 @@ const production = process.env.NODE_ENV === 'production';
 
 const configuration = {
   devtool: production ? 'inline-source-map' : 'none',
-  entry: { app: resolve('src', 'index.ts') },
+  entry: { app: resolve('app', 'index.ts') },
   output: {
     path: resolve('build'),
     filename: production ? '[name].[hash].bundle.js' : '[name].bundle.js'
@@ -37,7 +37,7 @@ const configuration = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: resolve('src', 'index.html')
+      template: resolve('app', 'index.html')
     }),
     production ? new webpack.NoEmitOnErrorsPlugin() : null,
     production ? new UglifyJsPlugin({ sourceMap: true }) : null

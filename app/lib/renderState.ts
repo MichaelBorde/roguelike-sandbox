@@ -1,5 +1,4 @@
-import { Grid } from '../tools';
-import { State } from '../update';
+import { Grid, State } from '../../lib';
 
 type World = Grid<string>;
 

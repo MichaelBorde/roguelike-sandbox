@@ -1,4 +1,4 @@
-import { Controller, Input } from '../update';
+import { Controller, Input } from '../../lib';
 
 interface CodeMapping {
   [key: string]: Input;

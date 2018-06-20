@@ -42,5 +42,17 @@
     "uglifyjs-webpack-plugin": "1.1.8",
     "webpack": "^3.10.0",
     "webpack-dev-server": "2.11.1"
+  },
+  "jest": {
+    "transform": {
+      ".ts": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "mapCoverage": true,
+    "testRegex": "/(lib|app})/.*\\.spec\\.ts$",
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ]
   }
 }

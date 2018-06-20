@@ -1,5 +1,7 @@
 import { Point, Vector } from '../tools';
+import { addVectorToPoint } from '../tools/geometry';
 import { ControllerState } from './controller';
+import { sceneryCharacteristicsMap } from './scenery';
 import { State } from './state';
 
 export type UpdateState = (
@@ -13,19 +15,19 @@ export function updateState(description: {
 }) {
   const { controllerState, state } = description;
   if (controllerState.up) {
-    return movePlayer(state, new Vector({ x: 0, y: -1 }));
+    return movePlayer(state, { x: 0, y: -1 });
   } else if (controllerState.down) {
-    return movePlayer(state, new Vector({ x: 0, y: 1 }));
+    return movePlayer(state, { x: 0, y: 1 });
   } else if (controllerState.left) {
-    return movePlayer(state, new Vector({ x: -1, y: 0 }));
+    return movePlayer(state, { x: -1, y: 0 });
   } else if (controllerState.right) {
-    return movePlayer(state, new Vector({ x: 1, y: 0 }));
+    return movePlayer(state, { x: 1, y: 0 });
   }
   return { ...state };
 }
 
 function movePlayer(state: State, movement: Vector) {
-  const nextPosition = new Point(state.player.position).add(movement);
+  const nextPosition = addVectorToPoint(movement, state.player.position);
   if (movementAllowed(state, nextPosition)) {
     return {
       ...state,
@@ -39,5 +41,7 @@ function movePlayer(state: State, movement: Vector) {
 }
 
 function movementAllowed(state: State, position: Point) {
-  return state.scenery[position.y][position.x] === '.';
+  const rawPieceOfScenery = state.scenery[position.y][position.x];
+  const characteristics = sceneryCharacteristicsMap[rawPieceOfScenery];
+  return characteristics.passable;
 }

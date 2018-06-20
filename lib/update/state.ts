@@ -1,8 +1,8 @@
-import { Grid, RawPoint } from '../tools';
+import { Grid, Point } from '../tools';
 
 export type Scenery = Grid<string>;
 
 export interface State {
   scenery: Scenery;
-  player: { position: RawPoint };
+  player: { position: Point };
 }

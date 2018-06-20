@@ -1,20 +1,13 @@
 import { Vector } from './vector';
 
-export interface RawPoint {
+export interface Point {
   x: number;
   y: number;
 }
 
-export class Point {
-  public x: number;
-  public y: number;
-
-  constructor(raw: RawPoint) {
-    this.x = raw.x;
-    this.y = raw.y;
-  }
-
-  public add(vector: Vector) {
-    return new Point({ x: this.x + vector.x, y: this.y + vector.y });
-  }
+export function addVectorToPoint(vector: Vector, point: Point): Point {
+  return {
+    x: point.x + vector.x,
+    y: point.y + vector.y
+  };
 }

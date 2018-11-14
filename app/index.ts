@@ -1,4 +1,8 @@
 import './index.css';
 import { start } from './lib';
 
-start();
+const screen = document.getElementById('screen');
+
+if (screen) {
+  start(screen);
+}

@@ -3,9 +3,11 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const production = process.env.NODE_ENV === 'production';
+const mode = process.env.NODE_ENV || 'development';
+const production = mode === 'production';
 
 const configuration = {
+  mode,
   devtool: production ? 'inline-source-map' : 'none',
   entry: { app: resolve('app', 'index.ts') },
   output: {

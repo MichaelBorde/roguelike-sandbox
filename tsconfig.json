@@ -4,28 +4,15 @@
     "target": "es5",
     "module": "commonjs",
     "sourceMap": true,
-    "alwaysStrict": true,
-    "noEmitOnError": true,
-    "noImplicitAny": true,
+    "declaration": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
-    "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "types": [
-      "jest"
-    ],
-    "lib": [
-      "es2015",
-      "es2017",
-      "dom"
-    ]
+    "types": ["jest"],
+    "lib": ["es2015", "es2017", "dom"]
   },
-  "include": [
-    "./lib/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts",
-    "**/*.spec.js"
-  ]
+  "include": ["./lib/**/*", "./app/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.spec.js"]
 }

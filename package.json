@@ -26,28 +26,28 @@
   },
   "homepage": "https://github.com/MichaelBorde/roguelike-sandbox#readme",
   "devDependencies": {
-    "@types/jest": "22.1.1",
-    "css-loader": "0.28.9",
-    "html-webpack-plugin": "2.30.1",
-    "jest": "22.1.4",
-    "npm-run-all": "4.1.2",
-    "prettier": "1.10.2",
-    "style-loader": "0.20.1",
-    "ts-jest": "22.0.2",
-    "ts-loader": "^3.4.0",
-    "ts-node": "4.1.0",
-    "tslint": "5.9.1",
-    "tslint-config-prettier": "1.6.0",
-    "typescript": "2.6.2",
-    "uglifyjs-webpack-plugin": "1.1.8",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "2.11.1"
+    "@types/jest": "23.3.9",
+    "css-loader": "1.0.1",
+    "html-webpack-plugin": "3.2.0",
+    "jest": "23.6.0",
+    "npm-run-all": "4.1.3",
+    "prettier": "1.15.2",
+    "style-loader": "0.23.1",
+    "ts-jest": "23.10.4",
+    "ts-loader": "5.3.0",
+    "ts-node": "7.0.1",
+    "tslint": "5.11.0",
+    "tslint-config-prettier": "1.16.0",
+    "typescript": "3.1.6",
+    "uglifyjs-webpack-plugin": "2.0.1",
+    "webpack": "4.25.1",
+    "webpack-cli": "3.1.2",
+    "webpack-dev-server": "3.1.10"
   },
   "jest": {
     "transform": {
-      ".ts": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      ".ts": "ts-jest"
     },
-    "mapCoverage": true,
     "testRegex": "/(lib|app})/.*\\.spec\\.ts$",
     "moduleFileExtensions": [
       "js",

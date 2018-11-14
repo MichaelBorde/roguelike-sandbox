@@ -29,13 +29,13 @@ const initialState: State = {
   player: { position: { x: 3, y: 3 } }
 };
 
-export function start() {
+export function start(screen: HTMLElement) {
   const controller = new Controller();
   bindControllerToInputs(controller);
 
   const mainLoop = createMainLoop({
     controller,
-    renderState,
+    renderState: renderState(screen),
     updateState,
     initialState
   });

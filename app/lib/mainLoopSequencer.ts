@@ -6,6 +6,7 @@ export class MainLoopSequencer {
 
   constructor(mainLoop: MainLoop) {
     this.mainLoop = mainLoop;
+    this.drawAnimationFrame = 0;
   }
 
   public start() {

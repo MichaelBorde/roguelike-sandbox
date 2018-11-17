@@ -4,16 +4,16 @@
   "description": "Roguelike sandbox",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --inline --no-info",
+    "start": "webpack-dev-server --inline --no-info --mode=development",
     "tslint": "tslint --fix 'lib/**/*.ts' 'app/**/*.ts'",
     "jest": "jest",
     "testw": "jest --watch",
     "prettier": "prettier --write '**/*.ts'",
     "compile": "tsc --noEmit",
     "test": "run-s -c compile jest tslint",
-    "clean": "rm -rf ./build",
-    "bundle": "webpack --bail -p --progress",
-    "build": "NODE_ENV=production ./node_modules/.bin/run-s clean bundle"
+    "clean": "rm -rf ./dist",
+    "bundle": "webpack --bail --progress --mode=production",
+    "build": "./node_modules/.bin/run-s clean bundle"
   },
   "repository": {
     "type": "git",

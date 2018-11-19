@@ -20,7 +20,7 @@ const initialState: State = {
     [wall, floor, floor, floor, floor, wall],
     [wall, wall, wall, wall, wall, wall]
   ],
-  player: { position: { x: 1, y: 1 } }
+  player: { position: { x: 1, y: 1 }, lastMoveTime: 0 }
 };
 
 export function start(screen: HTMLElement) {

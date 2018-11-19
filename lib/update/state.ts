@@ -1,8 +1,11 @@
-import { Grid, Point } from '../tools';
+import { Point } from '../tools';
+import { Scenery } from './scenery';
 
-export type Scenery = Grid<string>;
+export interface Player {
+  position: Point;
+}
 
 export interface State {
   scenery: Scenery;
-  player: { position: Point };
+  player: Player;
 }

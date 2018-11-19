@@ -1,7 +1,6 @@
 import { Point, Vector } from '../tools';
 import { addVectorToPoint } from '../tools/geometry';
 import { ControllerState } from './controller';
-import { sceneryCharacteristicsMap } from './scenery';
 import { State } from './state';
 
 export type UpdateState = (
@@ -41,7 +40,6 @@ function movePlayer(state: State, movement: Vector) {
 }
 
 function movementAllowed(state: State, position: Point) {
-  const rawPieceOfScenery = state.scenery[position.y][position.x];
-  const characteristics = sceneryCharacteristicsMap[rawPieceOfScenery];
-  return characteristics.passable;
+  const sceneryElement = state.scenery[position.y][position.x];
+  return sceneryElement.passable;
 }

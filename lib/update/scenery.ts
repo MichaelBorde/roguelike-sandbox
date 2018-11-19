@@ -1,16 +1,12 @@
-export interface SceneryCharacteristics {
+import { Grid } from '../tools';
+
+export interface SceneryElement {
   passable: boolean;
 }
 
-export interface SceneryCharacteristicsMap {
-  [key: string]: SceneryCharacteristics;
-}
-
-export const sceneryCharacteristicsMap: SceneryCharacteristicsMap = {
-  '.': {
-    passable: true
-  },
-  '#': {
-    passable: false
-  }
+export const sceneryElements = {
+  wall: { passable: false },
+  floor: { passable: true }
 };
+
+export type Scenery = Grid<SceneryElement>;

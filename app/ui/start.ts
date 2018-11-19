@@ -5,7 +5,7 @@ import {
   State,
   updateState
 } from '../core';
-import { bindControllerToInputs } from './bindControllerToInputs';
+import { bindControllerToInputs } from './inputs';
 import { MainLoopSequencer } from './mainLoopSequencer';
 import { renderState } from './renderState';
 
@@ -20,7 +20,7 @@ const initialState: State = {
     [wall, floor, floor, floor, floor, wall],
     [wall, wall, wall, wall, wall, wall]
   ],
-  player: { position: { x: 3, y: 3 } }
+  player: { position: { x: 1, y: 1 } }
 };
 
 export function start(screen: HTMLElement) {

@@ -1,7 +1,8 @@
-import { RenderState } from '../render';
-import { Controller, State, UpdateState } from '../update';
+import { Controller, State, UpdateState } from './update';
 
 export type MainLoop = (timestamp: number) => void;
+
+export type RenderState = (state: State) => void;
 
 export function createMainLoop(construction: {
   controller: Controller;

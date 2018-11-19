@@ -1,9 +1,5 @@
-import { Point } from '../tools';
 import { Scenery } from './scenery';
-
-export interface Player {
-  position: Point;
-}
+import { Player } from './player';
 
 export interface State {
   scenery: Scenery;

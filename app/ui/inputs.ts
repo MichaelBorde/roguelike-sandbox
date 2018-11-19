@@ -1,7 +1,7 @@
 import { Controller, Input } from '../core';
 
 interface CodeMapping {
-  [key: string]: Input;
+  [key: string]: Input | undefined;
 }
 
 const codeMapping: CodeMapping = {

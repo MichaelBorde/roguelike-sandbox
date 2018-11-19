@@ -1,5 +1,5 @@
 import './index.css';
-import { start } from './lib';
+import { start } from './ui';
 
 const screen = document.getElementById('screen');
 

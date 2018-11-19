@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --inline --no-info --mode=development",
-    "tslint": "tslint --fix 'lib/**/*.ts' 'app/**/*.ts'",
+    "tslint": "tslint --fix 'app/**/*.ts'",
     "jest": "jest",
     "testw": "jest --watch",
     "prettier": "prettier --write '**/*.ts'",
@@ -48,7 +48,7 @@
     "transform": {
       ".ts": "ts-jest"
     },
-    "testRegex": "/(lib|app})/.*\\.spec\\.ts$",
+    "testRegex": "/app/.*\\.spec\\.ts$",
     "moduleFileExtensions": [
       "js",
       "json",
